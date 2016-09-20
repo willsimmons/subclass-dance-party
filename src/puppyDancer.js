@@ -1,6 +1,6 @@
 var puppyDancer = function (top, left, timeBetweenSteps) {
   var puppyDancer = Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class ="dancer puppyDancer"></span>');
+  this.$node.addClass('puppyDancer');
   this.setPosition(top, left);
   this.clickedPuppy();
 };
