@@ -2,6 +2,9 @@ $(document).ready(function() {
   window.dancers = [];
   var danceNode = [];
   var lineUpState = false;
+  var oldHorizontalPositions = [];
+  var oldVerticalPositions = [];
+
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -16,7 +19,7 @@ $(document).ready(function() {
      * A new object of the given type will be created and added
      * to the stage.
      */
-     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+    var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
     // console.log('dancerMakerFunctionName', dancerMakerFunctionName)
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
@@ -25,32 +28,46 @@ $(document).ready(function() {
     var dancer = new dancerMakerFunction(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
-      Math.random() * 1000
-      );
+      Math.random() * 1000);
     $('body').append(dancer.$node);
+    //setup for movement and reset
     danceNode.push(dancer);
+    oldVerticalPositions.push(dancer.top);
+    oldHorizontalPositions.push(dancer.left);
   });
+  
+  var vertical = function() {
+    for (var i = 0; i < danceNode.length; i++) {
 
-  $('.line-up').on('click', function(event) {
-    lineUpState = true;
-    if (lineUpState === true) {
-      lineUpState = false;
+      danceNode[i].setPosition(oldVerticalPositions[i], 400.00);
+    } 
+  };
+  
+  var horizontal = function() {
+    for (var i = 0; i < danceNode.length; i++) {
+      danceNode[i].setPosition(400.00, oldHorizontalPositions[i]);
     }
+  };
+
+  var reset = function() {
+    for (var i = 0; i < danceNode.length; i++) {
+      danceNode[i].setPosition(oldVerticalPositions[i], oldHorizontalPositions[i]);
+    }
+  };
+
+  $( '.vertical-line-up' ).on('click', function () {
+    vertical();
   });
 
-  // if (lineUpState === true) {
-  //   for (var i = 0; i < danceNode.length; i++) {
-  //     danceNode[i].setPosition(this.top, 400.00);
-  //   }
-  // } else if (lineUpState === false) {
-  //   for (var i = 0; i < danceNode.length; i++) {
-  //     danceNode[i].setPosition(400.00, this.left);
-  //   }
-  // }  working on toggling 
-  // $('.fan-out').on('click', function(event) {
-  //   for (var i = 0; i < danceNode.length; i++) {
-  //     danceNode[i].setPosition(400.00, this.left);
-  //   }
-  // });
+  $( '.horizontal-line-up' ).on('click', function () {
+    horizontal();
+  });
+
+  $( '.reset' ).on('click', function () {
+    reset();
+  });
+
+  
+
 });
 
