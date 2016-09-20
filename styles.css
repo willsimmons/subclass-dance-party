@@ -44,3 +44,22 @@ body, a:link, a:visited, a:active{
   height: 200px;
   position: absolute;  
 }
+
+.puppyDancer{
+  background-image: url(http://i.giphy.com/nojDCSoja1lio.gif);
+  width: 400px;
+  height: 400px;
+  position: absolute; 
+}
+
+.htmlDancer:hover{
+  border: 30px solid yellow;
+}
+
+.cssDancer:hover{
+  border: 30px solid  #FFEFD5;
+}
+
+.jsDancer:hover{
+  border: 30px solid green;
+}

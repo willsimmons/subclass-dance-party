@@ -10,7 +10,6 @@ cssDancer.prototype.constructor = cssDancer;
 cssDancer.prototype.step = function() {
   //referring to the old step while overwriting with a new step
   Dancer.prototype.step.call(this);
-  //console.log(this.$node);
   //animation by way of resizing!
   this.$node.toggle(100);
 };
