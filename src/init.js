@@ -38,7 +38,6 @@ $(document).ready(function() {
   
   var vertical = function() {
     for (var i = 0; i < danceNode.length; i++) {
-
       danceNode[i].setPosition(oldVerticalPositions[i], 400.00);
     } 
   };

@@ -1,4 +1,4 @@
-// // Creates and returns a new dancer object that can step
+ // Creates and returns a new dancer object that can step
 // var makeDancer = function(top, left, timeBetweenSteps) {
 
 //   var dancer = {};
@@ -39,9 +39,11 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class ="dancer"></span>');
   this.step();
   this.setPosition(this.top, this.left);
+  this.changeColor();
 };
 
 Dancer.prototype.step = function () {
+  this.changeColor();
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
@@ -52,5 +54,24 @@ Dancer.prototype.setPosition = function(top, left) {
     left: left
   };
   this.$node.css(styleSettings);
+};
+
+Dancer.prototype.changeColor = function() {
+  $('.dancer').hover(
+    function() { 
+      var $this = $(this);
+      $this.data('bgcolor', $this.css('color')).css('color', '#380606');
+    },
+    function() { 
+      var $this = $(this);
+      $this.css('color', $this.data('bgcolor'));
+    }
+  ); 
+  // this.$node.mouseover(function() {
+  //   this.css({color: '#FFEFD5'});
+  //   console.log('this', this);
+  // }).mouseout(function() {
+  //   console.log('off');
+  //   this.css({color: '#663399'});
 };
 
