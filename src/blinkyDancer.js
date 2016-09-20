@@ -29,6 +29,6 @@ BlinkyDancer.prototype.constructor = BlinkyDancer;
 BlinkyDancer.prototype.step = function() {
   //referring to the old step while overwriting with a new step
   Dancer.prototype.step.call(this);
-  console.log(this.$node);
+  //console.log(this.$node);
   this.$node.toggle(400);
 };

@@ -42,7 +42,6 @@ var Dancer = function(top, left, timeBetweenSteps) {
 };
 
 Dancer.prototype.step = function () {
-  console.log('sup yo?');
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
