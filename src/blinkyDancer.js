@@ -1,5 +1,5 @@
 var BlinkyDancer = function (top, left, timeBetweenSteps) {
-  var blinkyDancer = Dancer.call(this, top, left, timeBetweenSteps);
+  Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('blinkyDancer');
   this.clicked();
 };

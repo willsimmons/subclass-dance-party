@@ -1,19 +1,18 @@
-var puppyDancer = function (top, left, timeBetweenSteps) {
-  var puppyDancer = Dancer.call(this, top, left, timeBetweenSteps);
+var PuppyDancer = function (top, left, timeBetweenSteps) {
+  Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('puppyDancer');
-  this.setPosition(top, left);
   this.clickedPuppy();
 };
 
-puppyDancer.prototype = Object.create(Dancer.prototype); 
+PuppyDancer.prototype = Object.create(Dancer.prototype); 
 
-puppyDancer.prototype.constructor = puppyDancer;
+PuppyDancer.prototype.constructor = PuppyDancer;
 
-puppyDancer.prototype.step = function() {
+PuppyDancer.prototype.step = function() {
   Dancer.prototype.step.call(this);
 };
 
-puppyDancer.prototype.clickedPuppy = function() {
+PuppyDancer.prototype.clickedPuppy = function() {
   $(this.$node).on('click', function () {
     console.log('clicked puppy');
   });

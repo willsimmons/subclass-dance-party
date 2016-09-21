@@ -1,13 +1,12 @@
-var htmlDancer = function (top, left, timeBetweenSteps) {
-  var htmlDancer = Dancer.call(this, top, left, timeBetweenSteps);
+var HtmlDancer = function (top, left, timeBetweenSteps) {
+  Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('htmlDancer');
-  this.setPosition(top, left);
 };
 
-htmlDancer.prototype = Object.create(Dancer.prototype);
-htmlDancer.prototype.constructor = htmlDancer;
+HtmlDancer.prototype = Object.create(Dancer.prototype);
+HtmlDancer.prototype.constructor = HtmlDancer;
 
-htmlDancer.prototype.step = function() {
+HtmlDancer.prototype.step = function() {
   //referring to the old step while overwriting with a new step
   Dancer.prototype.step.call(this);
   //animation by way of resizing!
