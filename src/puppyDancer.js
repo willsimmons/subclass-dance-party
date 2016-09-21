@@ -5,7 +5,6 @@ var PuppyDancer = function (top, left, timeBetweenSteps) {
 };
 
 PuppyDancer.prototype = Object.create(Dancer.prototype); 
-
 PuppyDancer.prototype.constructor = PuppyDancer;
 
 PuppyDancer.prototype.step = function() {
