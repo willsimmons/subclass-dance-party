@@ -12,7 +12,7 @@ describe('puppyDancer', function() {
     expect(puppyDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  //animation test
+  //animation test - to be written
   xit('should have a animate function that makes it bounce from top left to bottom right', function() {
     var oldTop = puppyDancer.$node.top;
     var oldRight = puppyDancer.$node.right; 
@@ -22,7 +22,7 @@ describe('puppyDancer', function() {
     expect(puppyDancer.$node.right).to.be.below(oldRight);
   });
   
-  //build something for when it clicks, decide on something
+  //build something for when it clicks, decide on a behavior - to be written
   xit('should respond once it is clicked', function() {
     sinon.spy(puppyDancer, 'clicked');
     puppyDancer.clicked();
