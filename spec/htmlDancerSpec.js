@@ -12,14 +12,19 @@ describe('htmlDancer', function() {
     expect(htmlDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  //write mouseover test here
-  xit('should have a step function that makes its node blink', function() {
+  it('should have a step function that makes its node blink', function() {
     sinon.spy(htmlDancer.$node, 'toggle');
     htmlDancer.step();
     expect(htmlDancer.$node.toggle.called).to.be.true;
   });
 
   xit('should respond once it is clicked', function() {
+    sinon.spy(htmlDancer, 'clicked');
+    htmlDancer.clicked();
+    expect(htmlDancer.clicked.called).to.be.true;
+  });
+
+  xit('should change colors on mouseover', function() {
     sinon.spy(htmlDancer, 'clicked');
     htmlDancer.clicked();
     expect(htmlDancer.clicked.called).to.be.true;
@@ -39,5 +44,6 @@ describe('htmlDancer', function() {
       clock.tick(timeBetweenSteps);
       expect(htmlDancer.step.callCount).to.be.equal(2);
     });
+    xit('should have a unique dance move', function() {});
   });
 });

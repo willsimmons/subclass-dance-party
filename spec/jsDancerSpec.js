@@ -12,8 +12,13 @@ describe('jsDancer', function() {
     expect(jsDancer.$node).to.be.an.instanceof(jQuery);
   });
   
-  //mouseover change color test
-  xit('should have a step function that makes its node blink', function() {
+  it('should have a step function that makes its node blink', function() {
+    sinon.spy(jsDancer.$node, 'toggle');
+    jsDancer.step();
+    expect(jsDancer.$node.toggle.called).to.be.true;
+  });
+
+  xit('should change colors on mouseover', function() {
     sinon.spy(jsDancer.$node, 'toggle');
     jsDancer.step();
     expect(jsDancer.$node.toggle.called).to.be.true;
@@ -39,5 +44,6 @@ describe('jsDancer', function() {
       clock.tick(timeBetweenSteps);
       expect(jsDancer.step.callCount).to.be.equal(2);
     });
+    xit('should have a unique dance move', function() {});
   });
 });

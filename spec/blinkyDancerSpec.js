@@ -18,13 +18,15 @@ describe('blinkyDancer', function() {
     expect(blinkyDancer.$node.toggle.called).to.be.true;
   });
 
-  it('should respond once it is clicked', function() {
-    sinon.spy(blinkyDancer, 'clicked');
-    blinkyDancer.clicked();
-    expect(blinkyDancer.clicked.called).to.be.true;
+  xit('should respond when clicked', function() {
+    expect(blinkyDancer.constructor).to.equal(BlinkyDancer);
   });
 
   it('should be reset to the blinkyDancer constructor', function() {
+    expect(blinkyDancer.constructor).to.equal(BlinkyDancer);
+  });
+
+  xit('should change colors on mouseover', function() {
     expect(blinkyDancer.constructor).to.equal(BlinkyDancer);
   });
 
@@ -34,9 +36,7 @@ describe('blinkyDancer', function() {
       expect(blinkyDancer.step.callCount).to.be.equal(0);
       clock.tick(timeBetweenSteps); // ? it seems an extra tick is necessary...
       clock.tick(timeBetweenSteps);
-
       expect(blinkyDancer.step.callCount).to.be.equal(1);
-
       clock.tick(timeBetweenSteps);
       expect(blinkyDancer.step.callCount).to.be.equal(2);
     });

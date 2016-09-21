@@ -11,19 +11,14 @@ describe('puppyDancer', function() {
   it('should have a jQuery $node object', function() {
     expect(puppyDancer.$node).to.be.an.instanceof(jQuery);
   });
-
-  //animation test - to be written
-  xit('should have a animate function that makes it bounce from top left to bottom right', function() {
-    var oldTop = puppyDancer.$node.top;
-    var oldRight = puppyDancer.$node.right; 
-    sinon.spy(puppyDancer.$node, 'animate');
-    puppyDancer.step();
-    expect(puppyDancer.$node.top).to.be.below(oldTop);
-    expect(puppyDancer.$node.right).to.be.below(oldRight);
-  });
   
-  //build something for when it clicks, decide on a behavior - to be written
   xit('should respond once it is clicked', function() {
+    sinon.spy(puppyDancer, 'clicked');
+    puppyDancer.clicked();
+    expect(puppyDancer.clicked.called).to.be.true;
+  });
+
+  xit('should change colors on mouseover', function() {
     sinon.spy(puppyDancer, 'clicked');
     puppyDancer.clicked();
     expect(puppyDancer.clicked.called).to.be.true;
@@ -42,6 +37,14 @@ describe('puppyDancer', function() {
       expect(puppyDancer.step.callCount).to.be.equal(1);
       clock.tick(timeBetweenSteps);
       expect(puppyDancer.step.callCount).to.be.equal(2);
+    });
+    xit('should have a animate function that makes it bounce from top left to bottom right', function() {
+      var oldTop = puppyDancer.$node.top;
+      var oldRight = puppyDancer.$node.right; 
+      sinon.spy(puppyDancer.$node, 'animate');
+      puppyDancer.step();
+      expect(puppyDancer.$node.top).to.be.below(oldTop);
+      expect(puppyDancer.$node.right).to.be.below(oldRight);
     });
   });
 });

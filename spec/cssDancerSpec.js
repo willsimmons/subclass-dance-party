@@ -12,8 +12,13 @@ describe('cssDancer', function() {
     expect(cssDancer.$node).to.be.an.instanceof(jQuery);
   });
  
-  // write about the mouse over 
   xit('should respond once it is clicked', function() {
+    sinon.spy(cssDancer, 'clicked');
+    cssDancer.clicked();
+    expect(cssDancer.clicked.called).to.be.true;
+  });
+
+  xit('should change colors on mouseover', function() {
     sinon.spy(cssDancer, 'clicked');
     cssDancer.clicked();
     expect(cssDancer.clicked.called).to.be.true;
@@ -33,5 +38,6 @@ describe('cssDancer', function() {
       clock.tick(timeBetweenSteps);
       expect(cssDancer.step.callCount).to.be.equal(2);
     });
+    xit('should have a unique dance move', function() {});
   });
 });
